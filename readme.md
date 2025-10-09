@@ -1,4 +1,4 @@
-# Desafio Técnico - CDB
+# Desafio Técnico - API Tarefas
 
 ![.NET](https://img.shields.io/badge/.NET-9.0-blueviolet)
 ![C#](https://img.shields.io/badge/C%23-512BD4?style=flat&logo=csharp&logoColor=white)
