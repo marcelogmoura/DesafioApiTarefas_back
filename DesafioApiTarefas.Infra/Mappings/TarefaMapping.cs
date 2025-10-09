@@ -14,7 +14,8 @@ namespace DesafioApiTarefas.Infra.Mappings
 
             builder.Property(t => t.Id)
                 .HasColumnName("ID")
-                .IsRequired();
+                .IsRequired()
+                .ValueGeneratedOnAdd(); 
 
             builder.Property(t => t.Titulo)
                 .HasColumnName("TITULO")
@@ -28,6 +29,9 @@ namespace DesafioApiTarefas.Infra.Mappings
             builder.Property(t => t.DataCriacao)
                 .HasColumnName("DATA_CRIACAO")
                 .IsRequired();
+
+            builder.Property(t => t.DataConclusao)
+                   .HasColumnName("DATA_CONCLUSAO");
 
             builder.Property(t => t.Status)
                 .HasColumnName("STATUS")

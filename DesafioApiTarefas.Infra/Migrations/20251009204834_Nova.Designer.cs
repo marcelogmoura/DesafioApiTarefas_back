@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DesafioApiTarefas.Infra.Migrations
 {
     [DbContext(typeof(ApiContext))]
-    [Migration("20251009165929_Inicial")]
-    partial class Inicial
+    [Migration("20251009204834_Nova")]
+    partial class Nova
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -33,6 +33,10 @@ namespace DesafioApiTarefas.Infra.Migrations
                         .HasColumnName("ID");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime?>("DataConclusao")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DATA_CONCLUSAO");
 
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2")

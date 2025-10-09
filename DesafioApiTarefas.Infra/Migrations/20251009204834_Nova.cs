@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DesafioApiTarefas.Infra.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class Nova : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -20,6 +20,7 @@ namespace DesafioApiTarefas.Infra.Migrations
                     TITULO = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     DESCRICAO = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     DATA_CRIACAO = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DATA_CONCLUSAO = table.Column<DateTime>(type: "datetime2", nullable: true),
                     STATUS = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>

@@ -31,6 +31,10 @@ namespace DesafioApiTarefas.Infra.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<DateTime?>("DataConclusao")
+                        .HasColumnType("datetime2")
+                        .HasColumnName("DATA_CONCLUSAO");
+
                     b.Property<DateTime>("DataCriacao")
                         .HasColumnType("datetime2")
                         .HasColumnName("DATA_CRIACAO");

@@ -1,6 +1,5 @@
 ﻿using DesafioApiTarefas.Infra.Mappings;
 using Microsoft.EntityFrameworkCore;
-using DesafioApiTarefas.Domain.Entities; // Adicionar o using da entidade Tarefa
 
 namespace DesafioApiTarefas.Infra.Contexts
 {
