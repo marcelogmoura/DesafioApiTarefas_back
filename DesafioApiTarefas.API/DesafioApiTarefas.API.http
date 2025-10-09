@@ -1,0 +1,6 @@
+@DesafioApiTarefas.API_HostAddress = http://localhost:5070
+
+GET {{DesafioApiTarefas.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
