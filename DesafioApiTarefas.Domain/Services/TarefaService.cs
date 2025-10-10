@@ -54,19 +54,48 @@ namespace DesafioApiTarefas.Domain.Services
             throw new NotImplementedException();
         }
 
-        public bool DeletarTarefa(int id)
+        public void DeletarTarefa(int id)
         {
-            throw new NotImplementedException();
+            var tarefa = _tarefaRepository.GetById(id);
+
+            if (tarefa == null)
+                throw new KeyNotFoundException("Tarefa não encontrada.");
+
+            _tarefaRepository.Delete(tarefa);            
+
         }
 
         public TarefaResponseDto? ObterTarefaPorId(int id)
         {
-            throw new NotImplementedException();
+            var tarefa = _tarefaRepository.GetById(id);
+
+            if (tarefa == null)
+                throw new Exception("Tarefa não encontrada");
+
+            return new TarefaResponseDto
+            {
+                Id = tarefa.Id,
+                Titulo = tarefa.Titulo,
+                Descricao = tarefa.Descricao,
+                DataCriacao = tarefa.DataCriacao,                
+                Status = tarefa.Status
+            };
         }
 
         public List<TarefaResponseDto> ObterTodasTarefas()
         {
-            throw new NotImplementedException();
+            var tarefas = _tarefaRepository.GetAll();
+
+            return tarefas.Select(tarefa => new TarefaResponseDto
+            {
+                Id = tarefa.Id,
+                Titulo = tarefa.Titulo,
+                Descricao = tarefa.Descricao,
+                DataCriacao = tarefa.DataCriacao,                
+                Status = tarefa.Status
+            }).ToList();
         }
+
+
     }
 }

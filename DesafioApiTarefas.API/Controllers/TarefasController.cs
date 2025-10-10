@@ -15,9 +15,9 @@ namespace DesafioApiTarefas.API.Controllers
             _tarefaService = tarefaService;
         }
 
-        [HttpPost]        
+        [HttpPost]
         public IActionResult CriarTarefa(TarefaRequestDto request)
-        {            
+        {
             try
             {
                 var response = _tarefaService.CriarTarefa(request);
@@ -34,19 +34,41 @@ namespace DesafioApiTarefas.API.Controllers
         [HttpGet]
         public IActionResult ObterTarefas()
         {
-            return Ok();
+            try
+            {
+                var response = _tarefaService.ObterTodasTarefas();
+                return StatusCode(200, response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
+
         }
 
-        [HttpPut("{id}")]   
+        [HttpPut("{id}")]
         public IActionResult AtualizarTarefa(int id)
         {
             return Ok();
         }
 
-        [HttpDelete("{id}")]    
+        [HttpDelete("{id}")]
         public IActionResult DeletarTarefa(int id)
         {
-            return Ok();
+            try
+            {
+                _tarefaService.DeletarTarefa(id);
+                return StatusCode(200, new { message = "Tarefa excluída"});
+            }
+            catch (ApplicationException ex)
+            {
+                return StatusCode(404, new { message = ex.Message });
+            }
+
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
     }
 }

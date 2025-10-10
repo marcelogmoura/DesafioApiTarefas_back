@@ -1,6 +1,7 @@
 ﻿using DesafioApiTarefas.Domain.Entities;
 using DesafioApiTarefas.Domain.Interfaces.Repositories;
 using DesafioApiTarefas.Infra.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace DesafioApiTarefas.Infra.Repositories
 {
@@ -18,19 +19,23 @@ namespace DesafioApiTarefas.Infra.Repositories
             _apiContext.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(Tarefa tarefa)
         {
-            throw new NotImplementedException();
+            _apiContext.Remove(tarefa);
+            _apiContext.SaveChanges();
         }
-
+         
         public List<Tarefa> GetAll()
         {
-            throw new NotImplementedException();
+            return _apiContext.Set<Tarefa>()
+                              .OrderBy(t => t.Id)
+                              .ToList();
         }
 
         public Tarefa? GetById(int id)
         {
-            throw new NotImplementedException();
+            return _apiContext.Set<Tarefa>()
+                              .SingleOrDefault(t => t.Id == id);
         }
 
         public void Put(Tarefa tarefa)

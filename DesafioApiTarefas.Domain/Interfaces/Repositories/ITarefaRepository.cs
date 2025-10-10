@@ -8,14 +8,7 @@ namespace DesafioApiTarefas.Domain.Interfaces.Repositories
         Tarefa? GetById(int id);
         List<Tarefa> GetAll();
         void Put(Tarefa tarefa);        
-        void Delete(int id);
+        void Delete(Tarefa tarefa);
     }
 }
 
-/* async
- *      Task AddAsync(Tarefa tarefa);
-        Task<Tarefa?> GetByIdAsync(int id); 
-        Task<List<Tarefa>> GetAllAsync();
-        Task UpdateAsync(Tarefa tarefa);
-        Task DeleteAsync(int id);
- */

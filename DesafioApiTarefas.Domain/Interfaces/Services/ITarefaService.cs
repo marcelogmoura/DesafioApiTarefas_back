@@ -9,7 +9,7 @@ namespace DesafioApiTarefas.Domain.Interfaces.Services
         List<TarefaResponseDto> ObterTodasTarefas();
         TarefaResponseDto? ObterTarefaPorId(int id);
         TarefaResponseDto? AtualizarTarefa(int id, TarefaRequestDto request);
-        bool DeletarTarefa(int id);
+        void DeletarTarefa(int id);
 
 
     }
