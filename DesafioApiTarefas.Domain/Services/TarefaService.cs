@@ -18,7 +18,7 @@ namespace DesafioApiTarefas.Domain.Services
             _validator=validator;
         }
 
-        public TarefaResponseDto CriarTarefa(TarefaRequestDto request)
+        public TarefaResponseDto CriarTarefa(CriarTarefaRequestDto request)
         {
             var tarefa = new Tarefa
             {                
@@ -43,15 +43,41 @@ namespace DesafioApiTarefas.Domain.Services
                 Id = tarefa.Id,
                 Titulo = tarefa.Titulo,
                 Descricao = tarefa.Descricao,
-                DataCriacao = tarefa.DataCriacao,
+                DataCriacao = tarefa.DataCriacao, 
+                DataConclusao = tarefa.DataConclusao,
                 Status = tarefa.Status
             };
 
             return response;
         }
-        public TarefaResponseDto? AtualizarTarefa(int id, TarefaRequestDto request)
+        public TarefaResponseDto? AtualizarTarefa(int id, AtualizarTarefaRequestDto request)
         {
-            throw new NotImplementedException();
+            var tarefa = _tarefaRepository.GetById(id);
+
+            if(tarefa == null)
+                throw new KeyNotFoundException("Tarefa não encontrada.");
+
+            tarefa.Titulo = request.Titulo;
+            tarefa.Descricao = request.Descricao;
+            tarefa.Status = request.Status;
+            tarefa.DataConclusao = request.DataConclusao;            
+
+            var validationResult = _validator.Validate(tarefa);
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult.Errors);
+            }
+            _tarefaRepository.Put(tarefa);
+
+            return new TarefaResponseDto
+            {
+                Id = tarefa.Id,
+                Titulo = tarefa.Titulo,
+                Descricao = tarefa.Descricao,
+                DataCriacao = tarefa.DataCriacao,
+                DataConclusao = tarefa.DataConclusao,
+                Status = tarefa.Status
+            };
         }
 
         public void DeletarTarefa(int id)
@@ -77,7 +103,8 @@ namespace DesafioApiTarefas.Domain.Services
                 Id = tarefa.Id,
                 Titulo = tarefa.Titulo,
                 Descricao = tarefa.Descricao,
-                DataCriacao = tarefa.DataCriacao,                
+                DataCriacao = tarefa.DataCriacao,
+                DataConclusao = tarefa.DataConclusao,
                 Status = tarefa.Status
             };
         }
@@ -91,7 +118,8 @@ namespace DesafioApiTarefas.Domain.Services
                 Id = tarefa.Id,
                 Titulo = tarefa.Titulo,
                 Descricao = tarefa.Descricao,
-                DataCriacao = tarefa.DataCriacao,                
+                DataCriacao = tarefa.DataCriacao,
+                DataConclusao = tarefa.DataConclusao,
                 Status = tarefa.Status
             }).ToList();
         }

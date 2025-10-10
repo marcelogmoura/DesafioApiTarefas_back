@@ -1,6 +1,7 @@
 ﻿using DesafioApiTarefas.Domain.Dtos.Request;
 using DesafioApiTarefas.Domain.Dtos.Response;
 using DesafioApiTarefas.Domain.Interfaces.Services;
+using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DesafioApiTarefas.API.Controllers
@@ -16,7 +17,7 @@ namespace DesafioApiTarefas.API.Controllers
         }
 
         [HttpPost]
-        public IActionResult CriarTarefa(TarefaRequestDto request)
+        public IActionResult CriarTarefa(CriarTarefaRequestDto request)
         {
             try
             {
@@ -47,10 +48,45 @@ namespace DesafioApiTarefas.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult AtualizarTarefa(int id)
+        public IActionResult AtualizarTarefa(int id, [FromBody] AtualizarTarefaRequestDto request)
         {
-            return Ok();
+            try
+            {
+                var response = _tarefaService.AtualizarTarefa(id, request);
+                return StatusCode(200, response);        
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return StatusCode(404, new { message = ex.Message });
+            }
+            catch (ValidationException ex)
+            {
+                return StatusCode(400, new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
         }
+
+
+        [HttpGet("{id}")]
+        public IActionResult ObterTarefaPorId(int id)
+        {
+            try
+            {
+                var response = _tarefaService.ObterTarefaPorId(id);
+                if (response == null)
+                    return StatusCode(404, new { message = "Tarefa não encontrada" });
+                return StatusCode(200, response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { error = ex.Message });
+            }
+        }
+
+
 
         [HttpDelete("{id}")]
         public IActionResult DeletarTarefa(int id)

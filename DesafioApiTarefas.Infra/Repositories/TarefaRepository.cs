@@ -40,7 +40,8 @@ namespace DesafioApiTarefas.Infra.Repositories
 
         public void Put(Tarefa tarefa)
         {
-            throw new NotImplementedException();
+            _apiContext.Update(tarefa);
+            _apiContext.SaveChanges();
         }
     }
 }

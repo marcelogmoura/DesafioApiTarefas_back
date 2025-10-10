@@ -5,12 +5,11 @@ namespace DesafioApiTarefas.Domain.Interfaces.Services
 {
     public interface ITarefaService
     {
-        TarefaResponseDto CriarTarefa(TarefaRequestDto request);
+        TarefaResponseDto CriarTarefa(CriarTarefaRequestDto request);
         List<TarefaResponseDto> ObterTodasTarefas();
         TarefaResponseDto? ObterTarefaPorId(int id);
-        TarefaResponseDto? AtualizarTarefa(int id, TarefaRequestDto request);
+        TarefaResponseDto? AtualizarTarefa(int id, AtualizarTarefaRequestDto request);
         void DeletarTarefa(int id);
-
 
     }
 }

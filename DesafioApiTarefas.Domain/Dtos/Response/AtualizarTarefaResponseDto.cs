@@ -2,13 +2,13 @@
 
 namespace DesafioApiTarefas.Domain.Dtos.Response
 {
-    public class TarefaResponseDto
+    public class AtualizarTarefaResponseDto
     {
-        public int Id { get; set; }
+        public int Id { get; private set; }
         public string? Titulo { get; set; }
         public string? Descricao { get; set; }
-        public DateTime? DataCriacao { get; set; }
-        public DateTime? DataConclusao  { get; set; } 
+        public DateTime? DataCriacao { get; private set; }
+        public DateTime? DataConclusao { get; set; }        
         public Status Status { get; set; }
     }
 }
