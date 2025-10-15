@@ -3,6 +3,7 @@ appsettings.Development.json
 appsettings.Production.json
 appsettings.Staging.json
 
+readme.md
 # Arquivos de Build
 # Ignora binários e arquivos intermediários gerados pelo build.
 [Dd]ebug/
