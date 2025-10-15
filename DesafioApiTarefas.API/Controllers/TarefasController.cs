@@ -1,5 +1,5 @@
 ﻿using DesafioApiTarefas.Domain.Dtos.Request;
-using DesafioApiTarefas.Domain.Dtos.Response;
+using DesafioApiTarefas.Domain.Exceptions;
 using DesafioApiTarefas.Domain.Interfaces.Services;
 using FluentValidation;
 using Microsoft.AspNetCore.Mvc;
@@ -22,9 +22,11 @@ namespace DesafioApiTarefas.API.Controllers
             try
             {
                 var response = _tarefaService.CriarTarefa(request);
-
                 return StatusCode(201, response);
-
+            }
+            catch (ValidationException ex)
+            {                
+                return StatusCode(400, new { message = ex.Message });
             }
             catch (Exception ex)
             {
@@ -55,7 +57,7 @@ namespace DesafioApiTarefas.API.Controllers
                 var response = _tarefaService.AtualizarTarefa(id, request);
                 return StatusCode(200, response);        
             }
-            catch (KeyNotFoundException ex)
+            catch (TarefaNaoEncontradaException ex)
             {
                 return StatusCode(404, new { message = ex.Message });
             }
@@ -75,11 +77,14 @@ namespace DesafioApiTarefas.API.Controllers
         {
             try
             {
-                var response = _tarefaService.ObterTarefaPorId(id);
-                if (response == null)
-                    return StatusCode(404, new { message = "Tarefa não encontrada" });
+                var response = _tarefaService.ObterTarefaPorId(id);    
                 return StatusCode(200, response);
             }
+            catch (TarefaNaoEncontradaException ex) 
+            {              
+                return StatusCode(404, new { message = ex.Message });
+            }
+
             catch (Exception ex)
             {
                 return StatusCode(500, new { error = ex.Message });
@@ -96,7 +101,7 @@ namespace DesafioApiTarefas.API.Controllers
                 _tarefaService.DeletarTarefa(id);
                 return StatusCode(200, new { message = "Tarefa excluída"});
             }
-            catch (ApplicationException ex)
+            catch (TarefaNaoEncontradaException ex) 
             {
                 return StatusCode(404, new { message = ex.Message });
             }

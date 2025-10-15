@@ -4,6 +4,7 @@ using DesafioApiTarefas.Domain.Entities;
 using DesafioApiTarefas.Domain.Interfaces.Repositories;
 using DesafioApiTarefas.Domain.Interfaces.Services;
 using DesafioApiTarefas.Domain.Validations;
+using DesafioApiTarefas.Domain.Exceptions;
 using ValidationException = FluentValidation.ValidationException;
 
 namespace DesafioApiTarefas.Domain.Services
@@ -55,7 +56,7 @@ namespace DesafioApiTarefas.Domain.Services
             var tarefa = _tarefaRepository.GetById(id);
 
             if(tarefa == null)
-                throw new KeyNotFoundException("Tarefa não encontrada.");
+                throw new TarefaNaoEncontradaException(id);
 
             tarefa.Titulo = request.Titulo;
             tarefa.Descricao = request.Descricao;
@@ -82,10 +83,11 @@ namespace DesafioApiTarefas.Domain.Services
 
         public void DeletarTarefa(int id)
         {
+
             var tarefa = _tarefaRepository.GetById(id);
 
             if (tarefa == null)
-                throw new KeyNotFoundException("Tarefa não encontrada.");
+                throw new TarefaNaoEncontradaException(id);
 
             _tarefaRepository.Delete(tarefa);            
 
@@ -96,7 +98,7 @@ namespace DesafioApiTarefas.Domain.Services
             var tarefa = _tarefaRepository.GetById(id);
 
             if (tarefa == null)
-                throw new Exception("Tarefa não encontrada");
+                throw new TarefaNaoEncontradaException(id);
 
             return new TarefaResponseDto
             {
