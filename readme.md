@@ -88,11 +88,6 @@ A API implementa o **CRUD (Create, Read, Update, Delete)** para tarefas, com os 
 * A interface do **Swagger** (`/swagger`) é a maneira mais rápida de testar os endpoints do CRUD (Criação, Leitura, Atualização, Exclusão).
 * Recomenda-se utilizar ferramentas como **Postman** ou **Insomnia** para testes mais detalhados e validação dos *Status Codes*.
 
----
-
-## 📽 Vídeo Demonstrativo
-
-Foi criado um vídeo demonstrando o funcionamento do Frontend (se houver) se comunicando com o Backend, incluindo uma breve explicação das funcionalidades implementadas e a **arquitetura adotada** no projeto.
 
 ---
 
