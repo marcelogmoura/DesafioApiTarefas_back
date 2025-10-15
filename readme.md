@@ -1,4 +1,4 @@
-# ?? Desafio Técnico - API de Gerenciamento de Tarefas
+# ğŸš€ Desafio TÃ©cnico - API de Gerenciamento de Tarefas
 
 [![C#](https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=c-sharp&logoColor=white)](https://docs.microsoft.com/pt-br/dotnet/csharp/)
 [![.NET Core 9.0](https://img.shields.io/badge/.NET_9.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white)](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
@@ -8,65 +8,65 @@
 [![Swagger](https://img.shields.io/badge/Swagger/OpenAPI-85EA2D?style=for-the-badge&logo=swagger&logoColor=black)](https://swagger.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> Este projeto é uma API RESTful para gerenciamento de tarefas, desenvolvida em **ASP.NET Core 9.0** como um desafio técnico. Focada em **Clean Code** e **SOLID**, a API oferece um CRUD completo para a entidade Tarefa.
+> Este projeto Ã© uma API RESTful para gerenciamento de tarefas, desenvolvida em **ASP.NET Core 9.0** como um desafio tÃ©cnico. Focada em **Clean Code** e **SOLID**, a API oferece um CRUD completo para a entidade Tarefa.
 
-## ?? Enunciado do Desafio
+## ğŸ“„ Enunciado do Desafio
 
-O enunciado completo do desafio técnico está disponível para consulta.
+O enunciado completo do desafio tÃ©cnico estÃ¡ disponÃ­vel para consulta.
 
-* **Arquivo Local:** O PDF original está na pasta `Pdf` deste repositório.
+* **Arquivo Local:** O PDF original estÃ¡ na pasta `Pdf` deste repositÃ³rio.
 * **Link Direto:** [DesafioApiTarefas.pdf](https://github.com/marcelogmoura/DesafioApiTarefas_back/blob/main/Pdf/DesafioApiTarefas.pdf)
 
 ---
 
 ---
 
-## ?? Tecnologias Utilizadas
+## ğŸ’» Tecnologias Utilizadas
 
 * **.NET Core 9.0** (Target Framework)
 * **C#**
 * **ASP.NET Core Web API**
-* **Entity Framework Core** para persistência de dados.
+* **Entity Framework Core** para persistÃªncia de dados.
 * **SQL Server** como banco de dados.
-* **FluentValidation** para regras de negócio e validação de dados.
-* **Swagger (OpenAPI)** para documentação e testes interativos da API.
-* **Git** para controle de versão.
+* **FluentValidation** para regras de negÃ³cio e validaÃ§Ã£o de dados.
+* **Swagger (OpenAPI)** para documentaÃ§Ã£o e testes interativos da API.
+* **Git** para controle de versÃ£o.
 
 ---
 
-## ? Requisitos Funcionais
+## âœ¨ Requisitos Funcionais
 
 A API implementa o **CRUD (Create, Read, Update, Delete)** para tarefas, com os seguintes recursos:
 
-* ? **Cadastro de Tarefas:** Campos como Título, Descrição, Status e Data de Conclusão.
-* ? **Listagem de Tarefas:** Permite listar todas as tarefas cadastradas.
-* ? **Atualização de Tarefas:** Edição de dados de uma tarefa específica.
-* ? **Exclusão de Tarefas:** Remove uma tarefa pelo seu ID.
-* ? **Validação de Dados:** O Título é obrigatório, e a Data de Conclusão não pode ser anterior à Data de Criação (validado via FluentValidation).
-* ? **Tratamento de Erros:** Respostas HTTP apropriadas (`200`, `201`, `400`, `404`, `500`).
+* âœ… **Cadastro de Tarefas:** Campos como TÃ­tulo, DescriÃ§Ã£o, Status e Data de ConclusÃ£o.
+* âœ… **Listagem de Tarefas:** Permite listar todas as tarefas cadastradas.
+* âœ… **AtualizaÃ§Ã£o de Tarefas:** EdiÃ§Ã£o de dados de uma tarefa especÃ­fica.
+* âœ… **ExclusÃ£o de Tarefas:** Remove uma tarefa pelo seu ID.
+* âœ… **ValidaÃ§Ã£o de Dados:** O TÃ­tulo Ã© obrigatÃ³rio, e a Data de ConclusÃ£o nÃ£o pode ser anterior Ã  Data de CriaÃ§Ã£o (validado via FluentValidation).
+* âœ… **Tratamento de Erros:** Respostas HTTP apropriadas (`200`, `201`, `400`, `404`, `500`).
 
 ---
 
-## ?? Como Executar o Projeto
+## ğŸš€ Como Executar o Projeto
 
-### Pré-requisitos
+### PrÃ©-requisitos
 
-* **.NET SDK 9.0** instalado na máquina.
-* **SQL Server** (a string de conexão atual aponta para o LocalDB).
+* **.NET SDK 9.0** instalado na mÃ¡quina.
+* **SQL Server** (a string de conexÃ£o atual aponta para o LocalDB).
 * **Ferramenta de Desenvolvimento:** Visual Studio 2022 ou VS Code.
 
 ### Passos para Rodar Localmente
 
-1.  **Clone o repositório:**
+1.  **Clone o repositÃ³rio:**
     ```bash
     git clone [https://github.com/marcelogmoura/DesafioApiTarefas_back.git](https://github.com/marcelogmoura/DesafioApiTarefas_back.git)
     cd DesafioApiTarefas_back
     ```
 
-2.  **Configure a Conexão:**
+2.  **Configure a ConexÃ£o:**
     * Verifique a *connection string* no arquivo `DesafioApiTarefas.Infra/Contexts/ApiContext.cs` ou ajuste no `appsettings.json` do projeto da API.
 
-3.  **Execute as Migrações:**
+3.  **Execute as MigraÃ§Ãµes:**
     * Garanta que o banco de dados e as tabelas sejam criadas (usando EF Core Migrations):
     ```bash
     dotnet ef database update --project DesafioApiTarefas.Infra --startup-project DesafioApiTarefas.API
@@ -77,21 +77,21 @@ A API implementa o **CRUD (Create, Read, Update, Delete)** para tarefas, com os 
     dotnet run --project DesafioApiTarefas.API/DesafioApiTarefas.API.csproj
     ```
 
-5.  **Acesse a Documentação Swagger:**
-    * A API estará documentada e pronta para testes no seu navegador:
+5.  **Acesse a DocumentaÃ§Ã£o Swagger:**
+    * A API estarÃ¡ documentada e pronta para testes no seu navegador:
     `http://localhost:5070/swagger` (Verifique a porta no `launchSettings.json`).
 
 ---
 
-## ?? Testes
+## ğŸ§ª Testes
 
-* A interface do **Swagger** (`/swagger`) é a maneira mais rápida de testar os endpoints do CRUD (Criação, Leitura, Atualização, Exclusão).
-* Recomenda-se utilizar ferramentas como **Postman** ou **Insomnia** para testes mais detalhados e validação dos *Status Codes*.
+* A interface do **Swagger** (`/swagger`) Ã© a maneira mais rÃ¡pida de testar os endpoints do CRUD (CriaÃ§Ã£o, Leitura, AtualizaÃ§Ã£o, ExclusÃ£o).
+* Recomenda-se utilizar ferramentas como **Postman** ou **Insomnia** para testes mais detalhados e validaÃ§Ã£o dos *Status Codes*.
 
 
 ---
 
-## ????? Autor
+## ğŸ§‘â€ğŸ’» Autor
 
 | Autor | GitHub | LinkedIn | Email |
 | :---: | :---: | :---: | :---: |
@@ -99,4 +99,4 @@ A API implementa o **CRUD (Create, Read, Update, Delete)** para tarefas, com os 
 
 ---
 
-Desenvolvido por Marcelo Moura © 2025
+Desenvolvido por Marcelo Moura Â© 2025
